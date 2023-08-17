@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <div>
+        <% if user_signed_in? %>
+          <%= button_to "logout", '/logout', method: :delete %>
+        <% else %>
+          <%= button_to "keycloak login", 'http://localhost:8080/realms/app-dev', data: {turbo: false} %>
+        <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
