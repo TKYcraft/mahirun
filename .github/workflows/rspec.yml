@@ -25,12 +25,12 @@ jobs:
     - name: build and create DB
       shell: bash
       run: |
-        docker-compose -f compose.yaml -f compose.rspec.yaml build
-        docker-compose -f compose.yaml -f compose.rspec.yaml run app rails db:create
+        docker compose -f compose.yaml -f compose.rspec.yaml build
+        docker compose -f compose.yaml -f compose.rspec.yaml run app rails db:create
       env:
         RAILS_ENV: test
     - name: exec rspec
       run:  |
-        docker-compose -f compose.yaml -f compose.rspec.yaml run app bundle exec rspec
+        docker compose -f compose.yaml -f compose.rspec.yaml run app bundle exec rspec
       env:
         RAILS_ENV: test
